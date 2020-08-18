@@ -41,7 +41,6 @@ async def on_message(message):
 
         while stock == 0:
             print("No stock detected. Monitoring for restock...")
-            await asyncio.sleep(600)
-
+            await asyncio.sleep(60)
 
 client.run(TOKEN)
