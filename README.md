@@ -23,9 +23,9 @@ Once you are prompted for a Walmart product link, please send it exactly like th
 
 If the product is out of stock, the **only** message that will be sent is ```Monitoring starting. Checking for stock...```. No other message will be sent in the Discord channel until stock is detected.
 
-Out of stock products will be checked for stock at a default delay of 600 seconds (every 10 minutes a request will be made). If you would like to change the delay, you may do so at [line 44](https://github.com/ra-zo/walmart-monitor/blob/master/walmart.py#L44). As an example, if you would like to monitor every 5 minutes, change it to 
+Out of stock products will be checked for stock at a default delay of 60 seconds (every minute a request will be made). If you would like to change the delay, you may do so at [line 44](https://github.com/ra-zo/walmart-monitor/blob/master/walmart.py#L44). As an example, if you would like to monitor every 30 seconds, change it to 
 ```
-await asyncio.sleep(300)
+await asyncio.sleep(30)
 ```
 
 To run, use ```python walmart.py``` or ```python /Users/YourNameHere/Downloads/walmart.py``` in terminal.
