@@ -26,6 +26,7 @@ async def on_message(message):
         
         # Check for stock
 
+        def checkStock():
         stock = requests.get(link).text.count('Add to cart')
         
         # If stock detected, send message to discord.
@@ -41,6 +42,7 @@ async def on_message(message):
 
         while stock == 0:
             print("No stock detected. Monitoring for restock...")
-            await asyncio.sleep(60)
+            checkStock()
+            await asyncio.sleep(30)
 
 client.run(TOKEN)
