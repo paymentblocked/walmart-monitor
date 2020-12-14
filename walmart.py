@@ -27,22 +27,22 @@ async def on_message(message):
         # Check for stock
 
         def checkStock():
-        stock = requests.get(link).text.count('Add to cart')
+            stock = requests.get(link).text.count('Add to cart')
         
-        # If stock detected, send message to discord.
+            # If stock detected, send message to discord.
 
-        if stock == 1:
-            embed = discord.Embed(title="**Restock Detected!**", color=0x0071ce, description="Link: " + link)
-            embed.set_author(name="Walmart Monitor", url="https://www.walmart.com", icon_url="https://www.bocaratontribune.com/wp-content/uploads/2020/06/walmart-logo-300x300.jpg")
-            embed.set_thumbnail(url="https://cdn.corporate.walmart.com/dims4/WMT/c2bbbe9/2147483647/strip/true/crop/2389x930+0+0/resize/1446x563!/quality/90/?url=https%3A%2F%2Fcdn.corporate.walmart.com%2Fd6%2Fe7%2F48e91bac4a8ca8f22985b3682370%2Fwalmart-logos-lockupwtag-horiz-blu-rgb.png")
-            await message.channel.send(embed=embed)
-            print("Restock detected, successfully sent to Discord.")
-            
-         # If no stock is detected, do not send message to discord. Continue to monitor for stock using asyncio.sleep
+            if stock == 1:
+                embed = discord.Embed(title="**Restock Detected!**", color=0x0071ce, description="Link: " + link)
+                embed.set_author(name="Walmart Monitor", url="https://www.walmart.com", icon_url="https://www.bocaratontribune.com/wp-content/uploads/2020/06/walmart-logo-300x300.jpg")
+                embed.set_thumbnail(url="https://cdn.corporate.walmart.com/dims4/WMT/c2bbbe9/2147483647/strip/true/crop/2389x930+0+0/resize/1446x563!/quality/90/?url=https%3A%2F%2Fcdn.corporate.walmart.com%2Fd6%2Fe7%2F48e91bac4a8ca8f22985b3682370%2Fwalmart-logos-lockupwtag-horiz-blu-rgb.png")
+                await message.channel.send(embed=embed)
+                print("Restock detected, successfully sent to Discord.")
 
-        while stock == 0:
-            print("No stock detected. Monitoring for restock...")
-            checkStock()
-            await asyncio.sleep(30)
+             # If no stock is detected, do not send message to discord. Continue to monitor for stock using asyncio.sleep
+
+            while stock == 0:
+                print("No stock detected. Monitoring for restock...")
+                checkStock()
+                await asyncio.sleep(30)
 
 client.run(TOKEN)
